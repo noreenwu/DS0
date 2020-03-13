@@ -18,46 +18,31 @@ How many different telephone numbers are there in the records?
 Print a message:
 "There are <count> different telephone numbers in the records."
 """
-ph_numbers = {}
-ph_ary = []
-# print(ph_numbers.get(texts[0][0]))
 
-def register_num(ph_num):
-    if ph_numbers.get(ph_num) is None:
-        ph_numbers[ph_num] = 1
-    else:
-        ph_numbers[ph_num] += 1
+text_ary = []
 
 
 for i in range(len(texts)):
-    print (texts[i][0])
-    print (texts[i][1])
-    ph_ary.append(texts[i][0])
-    ph_ary.append(texts[i][1])
-    register_num(texts[i][0])
-    register_num(texts[i][1])
-
-ph_set = set(ph_ary)
+    text_ary.append(texts[i][0])
+    text_ary.append(texts[i][1])
 
 
-print("length of set", len(ph_set))
-
-for k in ph_numbers.keys():
-    print (k)
-
-print ("length of dict ", len(ph_numbers))
+text_set = set(text_ary)
+text_set_num = len(text_set)
+# print("length of set", text_set_num)
 
 
+call_ary = []
+for j in range(len(calls)):
+    call_ary.append(calls[j][0])
+    call_ary.append(calls[j][1])
 
-# print ("ary length", len(ph_ary)
-    # register_num(texts[i][1])
 
-# counter = 0
-# for k in ph_numbers.keys():
-#     counter += 1
+call_set = set(call_ary)
+call_set_num = len(call_set)
+# print("length of second set", call_set_num)
 
-# print (counter)
-# repeat for calls
+total_num = text_set_num + call_set_num
+print("There are " + str(total_num) + " different telephone numbers in the records")
 
-# for j in range(len(calls)):
-#     print (calls[j])
+
