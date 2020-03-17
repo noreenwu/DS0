@@ -48,20 +48,37 @@ fixedline = []
 mobile = []
 telemarketer = []   # there are no calls TO a telemarketer
 
+from_080_to_080 = caller_080 = 0
+
+
 for i in range(len(calls)):
     if (calls[i][0]).find('(080)') == 0:
         # print (calls[i][0] + " called " + calls[i][1])
+        caller_080 += 1
         if re.search('\(\d+\)', calls[i][1]):
             # print ("   area code found!")
+            if re.search('^\(080\)', calls[i][1]):
+                from_080_to_080 += 1
+
             fixedline.append(calls[i][1])
         elif re.search('\d+\s\d+', calls[i][1]):
             # print("   mobile number found!")
             mobile.append(calls[i][1])
 
 
-print("Bangalore to fixed line calls:")
-for j in fixedline:
+# print("The numbers called by people in Bangalore have codes:")
+
+fixedline_sorted = sorted(set(fixedline))
+for j in fixedline_sorted:
     print (j)
 
+mobile_sorted = sorted(set(mobile))
+for j in mobile_sorted:
+    print(j)
 
+
+print("from 080_to_080 ", from_080_to_080)
+print("total calls from 080 ", caller_080)
+percent = (from_080_to_080 / caller_080) * 100
+print(round(percent, 2), "percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
