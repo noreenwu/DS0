@@ -52,26 +52,23 @@ from_080_to_080 = caller_080 = 0
 
 calls_to_080 = set()
 mobile_prefix = set()
+fixedline_set = set()
 
 for i in range(len(calls)):
     if (calls[i][0]).find('(080)') == 0:
-        # print (calls[i][0] + " called " + calls[i][1])
         caller_080 += 1
         match = re.search('\(0\d+\)', calls[i][1])
         if match:
-            print ("   area code found!", match.group())
-            print ("   from ", calls[i][1])
             calls_to_080.add(match.group())
             if re.search('^\(080\)', calls[i][1]):
                 from_080_to_080 += 1
 
             fixedline.append(calls[i][1])
+            fixedline_set.add(match.group())
         else:
             match2 = re.search('([789]\d\d\d)\d*\s\d+', calls[i][1])
             if match2:
-                print("   mobile number found: ", calls[i][1])
                 mobile.append(calls[i][1])
-                print("     and prefix was ", match2.group(1))
                 mobile_prefix.add(match2.group(1))
 
 print("set collected num area codes ", len(calls_to_080))
@@ -79,13 +76,23 @@ print("set collected mobile prefixes ", len(mobile_prefix))
 
 print("The numbers called by people in Bangalore have codes:")
 
-fixedline_sorted = sorted(set(fixedline))
-for j in fixedline_sorted:
-    print (j)
+print("fixedline area codes")
+to_fixed_line_sorted = sorted(fixedline_set)
+for x in to_fixed_line_sorted:
+    print(x)
 
-mobile_sorted = sorted(set(mobile))
-for j in mobile_sorted:
-    print(j)
+
+to_mobile_prefix_sorted = sorted(mobile_prefix)
+for x in to_mobile_prefix_sorted:
+    print(x)
+
+# fixedline_sorted = sorted(set(fixedline))
+# for j in fixedline_sorted:
+#     print (j)
+
+# mobile_sorted = sorted(set(mobile))
+# for j in mobile_sorted:
+#     print(j)
 
 
 percent = (from_080_to_080 / caller_080) * 100
