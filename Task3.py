@@ -50,23 +50,34 @@ telemarketer = []   # there are no calls TO a telemarketer
 
 from_080_to_080 = caller_080 = 0
 
+calls_to_080 = set()
+mobile_prefix = set()
 
 for i in range(len(calls)):
     if (calls[i][0]).find('(080)') == 0:
         # print (calls[i][0] + " called " + calls[i][1])
         caller_080 += 1
-        if re.search('\(\d+\)', calls[i][1]):
-            # print ("   area code found!")
+        match = re.search('\(0\d+\)', calls[i][1])
+        if match:
+            print ("   area code found!", match.group())
+            print ("   from ", calls[i][1])
+            calls_to_080.add(match.group())
             if re.search('^\(080\)', calls[i][1]):
                 from_080_to_080 += 1
 
             fixedline.append(calls[i][1])
-        elif re.search('\d+\s\d+', calls[i][1]):
-            # print("   mobile number found!")
-            mobile.append(calls[i][1])
+        else:
+            match2 = re.search('([789]\d\d\d)\d*\s\d+', calls[i][1])
+            if match2:
+                print("   mobile number found: ", calls[i][1])
+                mobile.append(calls[i][1])
+                print("     and prefix was ", match2.group(1))
+                mobile_prefix.add(match2.group(1))
 
+print("set collected num area codes ", len(calls_to_080))
+print("set collected mobile prefixes ", len(mobile_prefix))
 
-# print("The numbers called by people in Bangalore have codes:")
+print("The numbers called by people in Bangalore have codes:")
 
 fixedline_sorted = sorted(set(fixedline))
 for j in fixedline_sorted:
@@ -77,8 +88,6 @@ for j in mobile_sorted:
     print(j)
 
 
-print("from 080_to_080 ", from_080_to_080)
-print("total calls from 080 ", caller_080)
 percent = (from_080_to_080 / caller_080) * 100
 print(round(percent, 2), "percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
