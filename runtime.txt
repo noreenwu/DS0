@@ -1,0 +1,16 @@
+Task 0:
+
+The runtime for looking up the value of the first text and the last call is O(1). That is because the address is at a specific location and once that location is computed, based on the size of the entries, the retrieval happens in constant time. There is no need to look through other entries in the tables.
+
+
+Task 1:
+
+Loop through each file O(N) + O(M), creating an array of phone numbers (2 per line). Then convert the arrays into sets and combine. Another O(N) + O(M). So the runtime is 2(O(N+M)) which can be simplified to O(N+M).
+
+
+Task 2:
+
+Loop through the calls O(N) and tally duration spent on phone for both caller and receiver,
+with tally kept in a dict. Then find the max duration in the dictionary (most likely O(N)). See if any other values have same max value O(N). The total runtime, then, is 3 * O(N), which can be simplified to O(N).
+
+
