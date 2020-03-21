@@ -5,7 +5,7 @@ The runtime for looking up the value of the first text and the last call is O(1)
 
 Task 1:
 
-Loop through each file O(N) + O(M), creating an array of phone numbers (2 per line). Then convert the arrays into sets and combine. Another O(N) + O(M). So the runtime is 2(O(N+M)) which can be simplified to O(N+M).
+Loop through each file O(N) + O(M), creating an array of phone numbers (there are 2 numbers per line). Then convert the arrays into sets and add the lengths. Converting to sets happens by calling set(), but may incur another O(N) + O(M). So the runtime is 2(O(N+M)) which can be simplified to O(N+M).
 
 
 Task 2:
