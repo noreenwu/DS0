@@ -19,9 +19,8 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
+# count numbers in texts file
 text_ary = []
-
-
 for i in range(len(texts)):
     text_ary.append(texts[i][0])
     text_ary.append(texts[i][1])
@@ -29,9 +28,9 @@ for i in range(len(texts)):
 
 text_set = set(text_ary)
 text_set_num = len(text_set)
-# print("length of set", text_set_num)
 
 
+# count numbers in calls file
 call_ary = []
 for j in range(len(calls)):
     call_ary.append(calls[j][0])
@@ -40,9 +39,9 @@ for j in range(len(calls)):
 
 call_set = set(call_ary)
 call_set_num = len(call_set)
-# print("length of second set", call_set_num)
+
 
 total_num = text_set_num + call_set_num
-print("There are " + str(total_num) + " different telephone numbers in the records")
+print("There are " + str(total_num) + " different telephone numbers in the records.")
 
 
