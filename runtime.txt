@@ -27,8 +27,7 @@ Part B piggybacked on the loop already used for Part A, but the running time to 
 
 Task 4:
 
-To find possible telemarketers, loop through calls list O(N), keeping track of unique callers in a set, and adding receiving calls to a disqualifying dict. Then loop through the texts list O(M), to find disqualifying numbers, and add these to the disqualifying dict. Loop through the unique callers O(less than N) and if number not in the disqualifying dict, add to list of possible telemarketers. Finally print the list of possible telemarketers O(T). In the worst case, every number on the call list is a telemarketer and also each one is a different number, and we have
-O(N) + O(M) + O(N) + O(N) or 3* O(N) + O(M) which can be simplified to O(N + M).
+To find possible telemarketers, loop through calls list O(N), keeping track of unique callers in a set, and adding receiving calls to a disqualifying dict. Then loop through the texts list O(M), to find disqualifying numbers, and add these to the disqualifying dict. Loop through the unique callers O(less than N) and if number not in the disqualifying dict, add to list of possible telemarketers. Finally, sort the list of possible telemarketers O(T log T), and then loop through to print it O(T). In the worst case, every number on the call list is a telemarketer and also each one is a different number, and we have O(N) + O(M) + O(N) + O(T log T) + O(T), which can be simplified to O(M + N + T) + O(T log T), which can be said to be O(N log N), because as N gets huge the T log T term will dominate, and in the worst case T approaches the size of N.
 
 
 
