@@ -11,7 +11,7 @@ Loop through each file O(N) + O(M), creating an array of phone numbers (there ar
 Task 2:
 
 Loop through the calls O(N) and tally duration spent on phone for both caller and receiver,
-with tally kept in a dict. Then find the max duration in the dictionary (most likely less than O(N), since many numbers repeat in the file). See if any other values have same max value O(N). The total runtime, then, is 3 * O(N), which can be simplified to O(N).
+with tally kept in a dict. Then find the max duration in the dictionary (most likely less than O(N), since many numbers repeat in the file, but worst case would be O(N)). See if any other values have same max value O(N). The total runtime, then, is 3 * O(N), which can be simplified to O(N).
 
 
 Task 3:

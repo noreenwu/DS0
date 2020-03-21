@@ -23,6 +23,10 @@ September 2016.".
 # calls only (not texts)
 phone_time = {}
 
+#------------------------------------------------------
+# register_phone_call: add the provided duration to the
+#   specified number's tally
+#------------------------------------------------------
 def register_phone_call(ph, dur):
     if phone_time.get(ph) is None:
         phone_time[ph] = 0
@@ -30,17 +34,22 @@ def register_phone_call(ph, dur):
     phone_time[ph] += dur
 
 
+#------------------------------------------------------
+# print_longest_message: given the phone number and
+#   duration, output the informational message
+#------------------------------------------------------
 def print_longest_message(phone_str, dur):
-    print (phone_str + " spent the longest time, " + str(dur) + " seconds, on the phone during September 2016.")
+    print (phone_str + " spent the longest time, " + str(dur) +
+            " seconds, on the phone during September 2016.")
 
 
-
+## loop through calls
 for i in range(len(calls)):
     date_time = calls[i][2]
     date = date_time.split(" ")
     date_pieces = date[0].split("-")
 
-    if date_pieces[1] == '09' and date_pieces[2] == '2016':
+    if date_pieces[1] == '09' and date_pieces[2] == '2016': # confirm Sept 2016
         register_phone_call(calls[i][0], int(calls[i][3]))
         register_phone_call(calls[i][1], int(calls[i][3]))
 
