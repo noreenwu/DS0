@@ -44,9 +44,6 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
-fixedline = []
-mobile = []
-telemarketer = []   # there are no calls TO a telemarketer
 
 from_080_to_080 = caller_080 = 0
 
@@ -63,20 +60,15 @@ for i in range(len(calls)):
             if re.search('^\(080\)', calls[i][1]):
                 from_080_to_080 += 1
 
-            fixedline.append(calls[i][1])
             fixedline_set.add(match.group())
         else:
             match2 = re.search('([789]\d\d\d)\d*\s\d+', calls[i][1])
             if match2:
-                mobile.append(calls[i][1])
                 mobile_prefix.add(match2.group(1))
 
-print("set collected num area codes ", len(calls_to_080))
-print("set collected mobile prefixes ", len(mobile_prefix))
 
 print("The numbers called by people in Bangalore have codes:")
 
-print("fixedline area codes")
 to_fixed_line_sorted = sorted(fixedline_set)
 for x in to_fixed_line_sorted:
     print(x)
@@ -86,13 +78,6 @@ to_mobile_prefix_sorted = sorted(mobile_prefix)
 for x in to_mobile_prefix_sorted:
     print(x)
 
-# fixedline_sorted = sorted(set(fixedline))
-# for j in fixedline_sorted:
-#     print (j)
-
-# mobile_sorted = sorted(set(mobile))
-# for j in mobile_sorted:
-#     print(j)
 
 
 percent = (from_080_to_080 / caller_080) * 100
