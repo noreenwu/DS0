@@ -34,9 +34,15 @@ def print_longest_message(phone_str, dur):
     print (phone_str + " spent the longest time, " + str(dur) + " seconds, on the phone during September 2016.")
 
 
+
 for i in range(len(calls)):
-    register_phone_call(calls[i][0], int(calls[i][3]))
-    register_phone_call(calls[i][1], int(calls[i][3]))
+    date_time = calls[i][2]
+    date = date_time.split(" ")
+    date_pieces = date[0].split("-")
+
+    if date_pieces[1] == '09' and date_pieces[2] == '2016':
+        register_phone_call(calls[i][0], int(calls[i][3]))
+        register_phone_call(calls[i][1], int(calls[i][3]))
 
 
 
