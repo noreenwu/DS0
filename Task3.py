@@ -55,7 +55,7 @@ mobile_prefix = set()
 fixedline_set = set()
 
 for i in range(len(calls)):
-    if (calls[i][0]).find('(080)') == 0:
+    if (calls[i][0]).find('(080)') == 0:   # if 080 found at index 0
         caller_080 += 1
         match = re.search('\(0\d+\)', calls[i][1])
         if match:
