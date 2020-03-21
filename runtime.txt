@@ -11,6 +11,23 @@ Loop through each file O(N) + O(M), creating an array of phone numbers (2 per li
 Task 2:
 
 Loop through the calls O(N) and tally duration spent on phone for both caller and receiver,
-with tally kept in a dict. Then find the max duration in the dictionary (most likely O(N)). See if any other values have same max value O(N). The total runtime, then, is 3 * O(N), which can be simplified to O(N).
+with tally kept in a dict. Then find the max duration in the dictionary (most likely less than O(N), since many numbers repeat in the file). See if any other values have same max value O(N). The total runtime, then, is 3 * O(N), which can be simplified to O(N).
+
+
+Task 3:
+
+Part A:
+Loop through the calls O(N) and then sort them using sorted O(M log M).  Total runtime is O(N + M log M) In this case, M is quite small since there are not that many area codes and mobile prefixes compared to the number of phone numbers in the file, so perhaps we can say that the running time is closer to O(N) in this case. However, in a worse case, M would be as big as N and the running time would be O(N + N log N). As N gets very large, N log N will dominate and the runtime will be O(N log N).
+
+
+Part B:
+Part B piggybacked on the loop already used for Part A, but the running time to compute just part B alone would be O(N), because it requires a loop through all the calls in the file.
+
+Task 4:
+
+To find possible telemarketers, loop through calls list O(N), keeping track of unique callers in a set, and adding receiving calls to a disqualifying dict. Then loop through the texts list O(M), to find disqualifying numbers, and add these to the disqualifying dict. Loop through the unique callers O(less than N) and if number not in the disqualifying dict, add to list of possible telemarketers. Finally print the list of possible telemarketers O(T). In the worst case, every number on the call list is a telemarketer and also each one is a different number, and we have
+O(N) + O(M) + O(N) + O(N) or 3* O(N) + O(M) which can be simplified to O(N + M).
+
+
 
 
