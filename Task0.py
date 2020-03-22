@@ -21,6 +21,6 @@ Print messages:
 """
 
 print("First record of texts, " + texts[0][0] + " texts " +  texts[0][1] + " at time " + texts[0][2])
-last = len(calls)-1
-print("Last record of calls, " + calls[last][0] + " calls " + calls[last][1] + " at time " +
-        calls[last][2] + " lasting " + calls[last][3] + " seconds")
+
+print("Last record of calls, " + calls[-1][0] + " calls " + calls[-1][1] + " at time " +
+        calls[-1][2] + ", lasting " + calls[-1][3] + " seconds")
