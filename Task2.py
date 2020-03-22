@@ -36,8 +36,7 @@ def register_phone_call(ph, dur):
 #   duration, output the informational message
 #------------------------------------------------------
 def print_longest_message(phone_str, dur):
-    print (phone_str + " spent the longest time, " + str(dur) +
-            " seconds, on the phone during September 2016.")
+    print ("{} spent the longest time, {} seconds, on the phone during September 2016.".format(phone_str, dur))
 
 
 ## loop through calls
