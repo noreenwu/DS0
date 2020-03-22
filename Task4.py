@@ -25,32 +25,36 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-# create a set of unique numbers making phone calls
-uniq_callers = set()
-disqualified_nums = {}
+# create a dict of unique numbers making phone calls
 
-for ph in calls:
-    uniq_callers.add(ph[0])
-    disqualified_nums[ph[1]] = 1   # any number receiving a call is disqualified
+possible_telemarketer = {}
 
-
-# add to dict of disqualified any numbers sending texts or receiving texts, from texts.csv
-for txt in texts:
-    disqualified_nums[txt[0]] = 1
-    disqualified_nums[txt[1]] = 1
+def check_number(num):
+    if possible_telemarketer.get(num) is not None:
+        del possible_telemarketer[num]
 
 
-# iterate through the set of unique numbers and do not include anything found in the disqualifying dict
-possible_telemarketer = []
-for u in uniq_callers:
-    if u not in disqualified_nums:
-        possible_telemarketer.append(u)
+for c in calls:
+    possible_telemarketer[c[0]] = True
 
 
-possible_telemarketer_sorted = sorted(possible_telemarketer)
+# loop through and eliminate numbers that received calls
+for c in calls:
+    check_number(c[1])
+
+
+# loop through and eliminate numbers that sent or received texts
+for t in texts:
+    check_number(t[0])
+    check_number(t[1])
+
+
+# print result
+sorted_telemarketers = sorted(possible_telemarketer.keys())
 
 print ("These numbers could be telemarketers:")
-for t in possible_telemarketer_sorted:
-    print(t)
+print("\n".join(sorted_telemarketers))
+
+
 
 
