@@ -19,29 +19,19 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
-# count numbers in texts file
-text_ary = []
-for i in range(len(texts)):
-    text_ary.append(texts[i][0])
-    text_ary.append(texts[i][1])
+phonenum_dict = {}
+# create or reassign key in dict for each text
+for t in texts:
+    phonenum_dict[t[0]] = 1
+    phonenum_dict[t[1]] = 1
 
 
-text_set = set(text_ary)
-text_set_num = len(text_set)
+# create or reassign key in dict for each call
+for c in calls:
+    phonenum_dict[c[0]] = 1
+    phonenum_dict[c[1]] = 1
 
 
-# count numbers in calls file
-call_ary = []
-for j in range(len(calls)):
-    call_ary.append(calls[j][0])
-    call_ary.append(calls[j][1])
-
-
-call_set = set(call_ary)
-call_set_num = len(call_set)
-
-
-total_num = text_set_num + call_set_num
-print("There are " + str(total_num) + " different telephone numbers in the records.")
+print("There are {} different telephone numbers in the records.".format(len(phonenum_dict)))
 
 
