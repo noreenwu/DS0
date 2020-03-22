@@ -70,14 +70,11 @@ for i in range(len(calls)):
 print("The numbers called by people in Bangalore have codes:")
 
 to_fixed_line_sorted = sorted(fixedline_set)
-for x in to_fixed_line_sorted:
-    print(x)
+print('\n'.join(to_fixed_line_sorted))
 
 
 to_mobile_prefix_sorted = sorted(mobile_prefix)
-for x in to_mobile_prefix_sorted:
-    print(x)
-
+print('\n'.join(to_mobile_prefix_sorted))
 
 
 percent = (from_080_to_080 / caller_080) * 100
