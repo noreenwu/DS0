@@ -28,10 +28,7 @@ phone_time = {}
 #   specified number's tally
 #------------------------------------------------------
 def register_phone_call(ph, dur):
-    if phone_time.get(ph) is None:
-        phone_time[ph] = 0
-
-    phone_time[ph] += dur
+    phone_time[ph] = phone_time.get(ph, 0) + dur
 
 
 #------------------------------------------------------
