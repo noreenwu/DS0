@@ -27,7 +27,12 @@ Part B piggybacked on the loop already used for Part A, but the running time to 
 
 Task 4:
 
-To find possible telemarketers, loop through calls list O(N), keeping track of unique callers in a set, and adding receiving calls to a disqualifying dict. Then loop through the texts list O(M), to find disqualifying numbers, and add these to the disqualifying dict. Loop through the unique callers O(less than N) and if number not in the disqualifying dict, add to list of possible telemarketers. Finally, sort the list of possible telemarketers O(T log T), and then loop through to print it O(T). In the worst case, every number on the call list is a telemarketer and also each one is a different number, and we have O(N) + O(M) + O(N) + O(T log T) + O(T), which can be simplified to O(M + N + T) + O(T log T), which can be said to be O(N log N), because as N gets huge the T log T term will dominate, and in the worst case T approaches the size of N.
+To find possible telemarketers, loop through calls list O(N), keeping track of unique callers in a dictionary.
+If a number is repeated, no new dictionary key will be created. Next, loop through the callers again, and
+if a receiving call had been on the suspect list, delete it: O(N). Now, loop through the texts and remove
+any numbers from the dict that sent or received texts O(M). Finally sort the keys O(N log N) and produce the final output. The total runtime for this algorithm is O(N) + O(N) + O(M) (assuming worst case of not eliminating any
+numbers from the suspect telemarketer list). Add on to this the cost of sorting the final list, which is worst case O(N log N). The total runtime  is [2* O(N)] + O(M) + O(N log N) or O(N log N) for extremely large N.
+
 
 
 
