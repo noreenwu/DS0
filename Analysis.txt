@@ -17,7 +17,7 @@ with tally kept in a dict. Then find the max duration in the dictionary (most li
 Task 3:
 
 Part A:
-Loop through the calls O(N) and then sort them using sorted: O(F log F) + O(M log M), where F is fixed numbers and M is mobile.  Total runtime is O(N + M log M + F log F) In this case, M and F are quite small since there are not that many area codes and mobile prefixes compared to the number of phone numbers in the file, so perhaps we can say that the running time is closer to O(N) in this case. However, in a worse case, M + F would be as big as N and the running time would be O(N + F log F + M log M) or
+Loop through the calls O(N) and then sort them using sorted: O(F log F) + O(M log M), where F is fixed numbers and M is mobile.  (The use of regular expressions could impact the running time, but in this case, the phone numbers are very short, so running times of the regular expression searches are not included here.) Total runtime is O(N + M log M + F log F) In this case, M and F are quite small since there are not that many area codes and mobile prefixes compared to the number of phone numbers in the file, so perhaps we can say that the running time is closer to O(N) in this case. However, in a worse case, M + F would be as big as N and the running time would be O(N + F log F + M log M) or
 O(N + N log N). As N gets very large, N log N will dominate and the runtime will be O(N log N).
 
 
